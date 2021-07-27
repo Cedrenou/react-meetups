@@ -5,7 +5,6 @@ import FavoritesContext from '../../store/favorite-context'
 
 const MeetupItem = (props) => {
     const favoriteCtx = useContext(FavoritesContext)
-
     const itemIsFavorite = favoriteCtx.itemIsFavorite(props.id)
 
     function toggleFavoriteStatusHandler() {
@@ -36,7 +35,9 @@ const MeetupItem = (props) => {
                 </div>
 
                 <div className={classes.actions}>
-                    <button onClick={() => console.log(favoriteCtx)}>To Favorites</button>
+                    <button onClick={toggleFavoriteStatusHandler}>
+                        {itemIsFavorite ? 'Remove from Favorites' : 'To Favorites'}
+                    </button>
                 </div>
             </li>
         </Card>
